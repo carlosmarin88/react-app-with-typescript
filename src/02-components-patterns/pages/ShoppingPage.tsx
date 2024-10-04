@@ -18,24 +18,15 @@ export const ShoppingPage = () => {
             }}>
                 <ProductCard product={product}>
                     <ProductCard.Image />
-                    <ProductCard.Title title={product.title} />
-                    <ProductCard.Buttons
-                        counter={0}
-                        increaseBy={function (value: number): void {
-                            throw new Error("Function not implemented.")
-                        }} isEmpty={false} />
+                    <ProductCard.Title title={"pasado por param"} />
+                    <ProductCard.Buttons />
 
                 </ProductCard>
 
                 <ProductCard product={product}>
                     <ProductImage />
-                    <ProductTitle title={product.title} />
-                    <ProductButtons
-                        counter={0}
-                        increaseBy={function (value: number): void {
-                            throw new Error("Function not implemented.")
-                        }} isEmpty={false} />
-
+                    <ProductTitle  />
+                    <ProductButtons />
                 </ProductCard>
             </div>
         </div>

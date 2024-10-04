@@ -32,21 +32,37 @@ const productContext = createContext({} as ProductContextProps);
 const { Provider } = productContext;
 
 export const ProductImage = ({ img = "" }) => {
+
+    const { product } = useContext(productContext);
+    let imgToShow: string;
+
+    if (img) {
+        imgToShow = img;
+    } else if (product.img) {
+        imgToShow = product.img;
+    } else {
+        imgToShow = noImage;
+    }
+
     return (
-        <img className={styles.productImg} src={img ? img : noImage} alt="Product image" />
+        <img className={styles.productImg} src={imgToShow} alt="Product image" />
     );
 }
 
-export const ProductTitle = ({ title }: { title: string }) => {
+export const ProductTitle = ({ title }: { title?: string }) => {
+
+    const { product } = useContext(productContext);
+    const titleToShow = title ?? product.title;
+
     return (
-        <span className={styles.productDescription}>{title}</span>
+        <span className={styles.productDescription}>{titleToShow}</span>
     );
 }
 
-export const ProductButtons = ({ counter, increaseBy, isEmpty }: ProductButtonsProps) => {
+export const ProductButtons = () => {
 
 
-    //const { increaseBy, counter } = useContext(productContext);
+    const { increaseBy, counter, isEmpty } = useContext(productContext);
 
     return (
         <div className={styles.buttonsContainer}>
