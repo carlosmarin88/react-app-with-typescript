@@ -9,9 +9,9 @@ export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
 
-export const ProductCard = ({ children, product, className, style }: ProductCardProps) => {
+export const ProductCard = ({ children, product, className, style, onChange, value }: ProductCardProps) => {
 
-    const { counter, isEmpty, increaseBy } = useProduct();
+    const { counter, isEmpty, increaseBy } = useProduct({onChange, product, value});
 
     return (
         <Provider value={{

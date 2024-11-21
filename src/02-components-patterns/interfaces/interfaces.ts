@@ -3,11 +3,18 @@ import { ProductTitleProps } from "../components/ProductTitle";
 import { ProductImageProps } from "../components/ProductImage";
 import { ProductButtonsProps } from "../components/ProductButtons";
 
+
+export interface  onChangeArgs {
+    product: Product,
+    count: number,
+}
 export interface ProductCardProps {
     product: Product,
     children?: ReactElement | ReactElement[],
     className?: string,
-    style?: CSSProperties | undefined 
+    style?: CSSProperties | undefined,
+    onChange?: (args: onChangeArgs) => void,
+    value?: number
 }
 
 export interface Product {
@@ -29,3 +36,8 @@ export interface ProductCardHOCProps {
     Image: (Props: ProductImageProps) => JSX.Element,
     Buttons: (Props: ProductButtonsProps) => JSX.Element,
 }
+
+export interface ProductInCart extends Product {
+    count: number
+}
+
