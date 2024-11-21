@@ -12,40 +12,18 @@ export const useShoppingCart = () => {
 
         setsShoppingCart(oldShoppingCart => {
 
-            const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0 };
-            // agregar producto
-            if (Math.max(productInCart.count + count, 0) > 0) {
-                productInCart.count += count;
-                return {
-                    ...oldShoppingCart,
-                    [product.id]: productInCart
-                }
-            }
+            console.log(count);
 
-            //Borrar el producto
-            delete oldShoppingCart[product.id];
-            return { ...oldShoppingCart };
-
-
-
-            /*
              if (count === 0) {
                  delete oldShoppingCart[product.id];
                  return { ...oldShoppingCart };
- 
-                 // otra manera
-                 
-                 //const { [produc t.id]: toDelete, ...rest } = oldShoppingCart;
-                 //console.log({ toDelete });
- 
-                 //return { ...rest }
                  
              }
              return {
                  ...oldShoppingCart,
                  [product.id]: { ...product, count }
              }
-             */
+             
         });
 
     }
